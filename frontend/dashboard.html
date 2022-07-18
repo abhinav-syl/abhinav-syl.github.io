@@ -35,14 +35,14 @@
             </div>
             <div class="middle">
                 <div class="middle-1">
-                    <div class="card" id="pricePlot">
-                        <p>middle1</p>
+                    <div class="card">
+                        <p id="pricePlot">Bar Plot</p>
                     </div>
                 </div>
             </div>
             <div class="right-nav">
                 <div class="card" style="height:50%">
-                    <p id = 'pieChart'>rightnav</p>
+                    <p id = 'pieChart'>Pie Chart</p>
                 </div>
             </div>
         </div>
@@ -120,11 +120,15 @@
             console.log('sdict = ', sDict)
         }
 
-        GetData('http://127.0.0.1:8000/booking/api/bookings/2022-07-04/2022-07-17?format=json', blist)
-        GetData('http://127.0.0.1:8000/booking/api/user?format=json', ulist)
-        GetData('http://127.0.0.1:8000/booking/api/room?format=json', rlist)
-        GetDict('http://127.0.0.1:8000/booking/api/accounts?format=json', incDict, 'date', 'income')
-        setTimeout(CreateDict, 100, ulist, sDict)
+        function GetWait(url, list){
+          setTimeout(GetData, 1000, url, list)
+        }
+
+        GetData('https://adevu.herokuapp.com/booking/api/bookings/2022-07-04/2022-07-17?format=json', blist)
+        GetData('https://adevu.herokuapp.com/booking/api/user?format=json', ulist)
+        GetData('https://adevu.herokuapp.com/booking/api/room?format=json', rlist)
+        GetDict('https://adevu.herokuapp.com/booking/api/accounts?format=json', incDict, 'date', 'income')
+        setTimeout(CreateDict, 1000, ulist, sDict)
         console.log('blist = ', blist)
         console.log('ulist = ', ulist)
         console.log('rlist = ', rlist)
@@ -142,8 +146,8 @@
             setTimeout(console.log('list = ', list.length), 100)
             setTimeout(a.innerHTML = list.length, 100)
         }
-        setTimeout(setValue, 100, ulist, 'numUsers')
-        setTimeout(setValue, 100, blist, 'numBookings')
+        setTimeout(setValue, 1000, ulist, 'numUsers')
+        setTimeout(setValue, 1000, blist, 'numBookings')
         var aroom = []
         var broom = []
         function seperate(){
@@ -158,9 +162,9 @@
             console.log('arrom = ',aroom)
             console.log('brrom = ',broom)
         }
-        setTimeout(seperate, 100)
-        setTimeout(setValue, 100, aroom, 'roomAvail')
-        setTimeout(setValue, 100, broom, 'roomNotAvail')
+        setTimeout(seperate, 1000)
+        setTimeout(setValue, 1000, aroom, 'roomAvail')
+        setTimeout(setValue, 1000, broom, 'roomNotAvail')
         setTimeout(console.log('blist len = ', blist.length),1000)
 
         function Plotting(dict, type, identity){
@@ -212,8 +216,8 @@
             };
             Plotly.newPlot(identity, data1);
         }
-        setTimeout(Plotting, 200, incDict, 'bar', 'pricePlot')
-        setTimeout(PiePlotting, 200, sDict, 'pie', 'pieChart')
+        setTimeout(Plotting, 2000, incDict, 'bar', 'pricePlot')
+        setTimeout(PiePlotting, 2000, sDict, 'pie', 'pieChart')
         </script>
     </body>
 </html>

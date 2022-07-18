@@ -79,7 +79,7 @@ span.psw {
 
 <h2>Login Form</h2>
 
-<form action="frontend/Booking.html">
+<form onsubmit="return false">
   <div class="imgcontainer">
     <img src="frontend/images/img_avatar2.png" alt="Avatar" class="avatar">
   </div>
@@ -93,7 +93,7 @@ span.psw {
     <input type="password" placeholder="Enter Password" name="psw" id="password" required>
     <br>
         
-    <button type="submit" onclick="PutData()">Login</button><br>
+    <button type="submit" id="submitBtn" onclick="PutData()">Login</button><br>
     <label>
       <input type="checkbox" checked="checked" name="remember"> Remember me
     </label>
@@ -111,7 +111,7 @@ span.psw {
              password: document.getElementById('password').value,
              }  
              console.log('data = ', data)
-        fetch('http://127.0.0.1:8000/booking/api/login', {
+        fetch('https://adevu.herokuapp.com/booking/api/login', {
           method: 'POST', // or 'PUT'
           headers: {
             'Content-Type': 'application/json',
@@ -126,6 +126,14 @@ span.psw {
           console.error('Error:', error);
         })
     }
+    document.getElementById("submitBtn").addEventListener("click", myWaitFunction);
+      
+      function myWaitFunction(){
+        setTimeout(myFunction,1000)
+      }
+      function myFunction() {
+        window.location.href="frontend/Booking.html";
+      }
 </script>
 </body>
 </html>

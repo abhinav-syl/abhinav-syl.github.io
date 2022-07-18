@@ -128,7 +128,7 @@
                  };
             console.log(data)
 
-            fetch('http://127.0.0.1:8000/booking/api/book', {
+            fetch('https://adevu.herokuapp.com/booking/api/book', {
               method: 'POST', // or 'PUT'
               headers: {
                 'Content-Type': 'application/json',
@@ -154,7 +154,7 @@
 
         function GetData(){
             var na = ''
-            fetch('http://127.0.0.1:8000/booking/api/logged?format=json')
+            fetch('https://adevu.herokuapp.com/booking/api/logged?format=json')
             .then(response => response.json())
             .then(data => {
               console.log('Success:', data[0].name);
